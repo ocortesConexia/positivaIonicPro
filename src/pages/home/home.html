@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Inicio sesión</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Tipo de documento</ion-label>
+      <ion-select [(ngModel)]="user.document_type">
+        <ion-option *ngFor="let documentType of documentTypes" [value]="documentType.value">{{ documentType.name }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Número de documento</ion-label>
+      <ion-input type="number" [(ngModel)]="user.document_number"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button full color="orange" (click)="login(user)">Ingresar</button>
+  <button ion-button full color="orange" (click)="goToRegister()" >Registrarse</button>
+</ion-content>

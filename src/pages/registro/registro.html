@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Registro</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Nombres</ion-label>
+      <ion-input type="text" [(ngModel)]="user.first_name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Apellidos</ion-label>
+      <ion-input type="text" [(ngModel)]="user.last_name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Edad</ion-label>
+      <ion-input type="number" [(ngModel)]="user.age"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tipo de documento</ion-label>
+      <ion-select [(ngModel)]="user.document_type">
+        <ion-option *ngFor="let documentType of documentTypes" [value]="documentType.value">{{ documentType.name }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Número de documento</ion-label>
+      <ion-input type="number" [(ngModel)]="user.document_number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tipo de Diabetes</ion-label>
+      <ion-select [(ngModel)]="tipo_diabetes">
+        <ion-option value="1" selected="true">Diabetes 1</ion-option>
+        <ion-option value="2">Diabetes 2</ion-option>
+        <ion-option value="3">Diabetes 3</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <button color="orange" ion-button block (click)="registrar()">Guardar</button>
+</ion-content>
