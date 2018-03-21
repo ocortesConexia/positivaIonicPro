@@ -14,6 +14,10 @@ export class UserService {
 
   constructor () {}
 
+  get authenticated () {
+    return JSON.parse(localStorage.getItem('user'))
+  }
+
   signUp(user: User): Promise<any> {
     return this.db.collection('users').add(user)
   }
@@ -26,7 +30,13 @@ export class UserService {
       .where('document_number', '==', user.document_number.toString())
       .get()
       .then(querySnapshot => {
-        console.log(querySnapshot)
+        const docs = querySnapshot.docs
+
+        if (docs.length) {
+          localStorage.setItem('user', JSON.stringify(docs[0].data()))
+        }
+
+        return docs[0] && docs[0].data()
       })
   }
 }
