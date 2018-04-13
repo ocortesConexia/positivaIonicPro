@@ -8,7 +8,7 @@ import { ListaPage } from "../lista/lista"
 
 interface User {
   document_type: string
-  document_number: number
+  document_number: string
 }
 
 @Component({
@@ -18,7 +18,10 @@ interface User {
 export class HomePage {
   documentTypes: Object[]
 
-  user: User = {} as User
+  user: User = {
+    document_type: 'CC',
+    document_number: '212897289'
+  }
 
   constructor(
     public navCtrl: NavController,
@@ -35,7 +38,7 @@ export class HomePage {
     this.$userService.authenticate(user)
       .then(userInfo => {
         if (userInfo) {
-          this.navCtrl.push(ListaPage)
+          this.navCtrl.push(ListaPage, { user: userInfo })
         }
       })
   }

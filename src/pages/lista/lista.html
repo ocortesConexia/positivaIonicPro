@@ -8,11 +8,20 @@
 
 
 <ion-content padding>
-  <h2>Nombre: {{ user.first_name }} {{ user.last_name }}</h2>
+  <h2>Nombre: {{ user.data.first_name }} {{ user.data.last_name }}</h2>
 
-  <ion-list>
-    <ion-item>
+  <ion-card *ngFor="let alarm of alarms">
+    <ion-card-header>
+      {{ alarm.type === 'control' ? 'Cita de control' : 'Toma de medicamentos' }}
+    </ion-card-header>
 
-    </ion-item>
-  </ion-list>
+    <ion-card-content>
+      <ion-list *ngIf="alarm.type === 'medicine'" >
+        <ion-item *ngFor="let medicine of alarm.medicines">
+          <strong>Medicamento:</strong> {{ medicine.name }}<br>
+          <strong>Hora:</strong> {{ medicine.date | date:'h:mm a' }} (Cada {{ medicine.interval }} horas)
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

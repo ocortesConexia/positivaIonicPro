@@ -7,7 +7,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import {RegistroPage} from '../pages/registro/registro';
-
+import { ListaPage } from '../pages/lista/lista'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -23,7 +23,8 @@ import { UserService } from '../services/user.service'
     ContactPage,
     HomePage,
     RegistroPage,
-    Diabetes1Page
+    Diabetes1Page,
+    ListaPage
   ],
   imports: [
     BrowserModule,
@@ -36,7 +37,8 @@ import { UserService } from '../services/user.service'
     ContactPage,
     HomePage,
     RegistroPage,
-    Diabetes1Page
+    Diabetes1Page,
+    ListaPage
   ],
   providers: [
     StatusBar,

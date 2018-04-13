@@ -23,20 +23,24 @@ export class UserService {
   }
 
   authenticate(user: any): Promise<any> {
-    console.log(user)
-
     return this.db.collection('users')
       .where('document_type', '==', user.document_type)
       .where('document_number', '==', user.document_number.toString())
       .get()
       .then(querySnapshot => {
+        let doc
         const docs = querySnapshot.docs
 
         if (docs.length) {
-          localStorage.setItem('user', JSON.stringify(docs[0].data()))
+          doc = {
+            id: docs[0].id,
+            data: docs[0].data()
+          }
+
+          localStorage.setItem('user', JSON.stringify(doc))
         }
 
-        return docs[0] && docs[0].data()
+        return doc
       })
   }
 }
