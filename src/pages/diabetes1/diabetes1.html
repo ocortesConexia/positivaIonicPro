@@ -17,6 +17,23 @@
     </ion-item>
 
     <ion-item>
+      <ion-label>Fecha control de cita</ion-label>
+      <ion-datetime></ion-datetime>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngFor="let medicine of medicines" style="position: relative">
+    <div class="buttons">
+      <button ion-button round icon-only clear color="secondary" (click)="addMedicine()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+
+      <button ion-button round icon-only clear color="danger" (click)="removeMedicine(medicine)" *ngIf="medicines.length > 1">
+        <ion-icon name="remove"></ion-icon>
+      </button>
+    </div>
+
+    <ion-item>
       <ion-label>Seleccione medicamento</ion-label>
       <ion-select [(ngModel)]="toppings" cancelText="Nah" okText="Okay!">
         <ion-option value="bacon" selected="true">Insulina</ion-option>
@@ -25,8 +42,13 @@
     </ion-item>
 
     <ion-item>
-      <ion-label>Fecha control de cita</ion-label>
-      <ion-datetime></ion-datetime>
+      <ion-label>Desde</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY hh:mm a" [(ngModel)]="medicine.from"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Intervalo</ion-label>
+      <ion-input type="number" [(ngModel)]="medicine.interval"></ion-input>
     </ion-item>
   </ion-list>
 
