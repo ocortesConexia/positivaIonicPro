@@ -1,6 +1,10 @@
 import { Component } from '@angular/core'
 import { NavController, NavParams } from 'ionic-angular'
 import { UserService } from '../../services/user.service'
+import { Diabetes1Page } from '../diabetes1/diabetes1';
+
+
+import { AlarmService } from '../../services/alarm.service'
 
 @Component({
   selector: 'page-lista',
@@ -8,13 +12,17 @@ import { UserService } from '../../services/user.service'
 })
 export class ListaPage {
   public user
-  public alarms = []
+  public alarms
 
   constructor(
     navParams: NavParams,
-    public $user: UserService) {
+    public $navCtrl: NavController,
+    public $user: UserService,
+    public $alarm: AlarmService) {
     this.user = navParams.get('user')
+    this.alarms = $alarm.alarms
 
+    /*
     const date = new Date()
 
     $user.db.collection('users').doc(this.user.id)
@@ -41,5 +49,10 @@ export class ListaPage {
 
         console.log(this.alarms)
       })
+      */
+  }
+
+  registerAlarms () {
+    this.$navCtrl.push(Diabetes1Page)
   }
 }

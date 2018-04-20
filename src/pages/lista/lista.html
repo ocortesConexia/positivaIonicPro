@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>lista</ion-title>
+    <ion-title>Alarmas</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -10,18 +10,23 @@
 <ion-content padding>
   <h2>Nombre: {{ user.data.first_name }} {{ user.data.last_name }}</h2>
 
-  <ion-card *ngFor="let alarm of alarms">
+  <ion-card *ngIf="alarms.medicines.length">
     <ion-card-header>
-      {{ alarm.type === 'control' ? 'Cita de control' : 'Toma de medicamentos' }}
+      <p><strong>Fecha control de cita:</strong> {{ alarms.control | date }}</p>
+      <p><strong>Fecha entrega de medicamentos:</strong> {{ alarms.delivery | date }}</p>
     </ion-card-header>
 
     <ion-card-content>
-      <ion-list *ngIf="alarm.type === 'medicine'" >
-        <ion-item *ngFor="let medicine of alarm.medicines">
+      <strong>Toma de medicamentos</strong>
+
+      <ion-list>
+        <ion-item *ngFor="let medicine of alarms.medicines">
           <strong>Medicamento:</strong> {{ medicine.name }}<br>
           <strong>Hora:</strong> {{ medicine.date | date:'h:mm a' }} (Cada {{ medicine.interval }} horas)
         </ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
+
+  <button ion-button full (click)="registerAlarms()">Registrar o Editar</button>
 </ion-content>

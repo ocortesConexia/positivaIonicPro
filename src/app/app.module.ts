@@ -15,6 +15,7 @@ import {Diabetes1Page} from "../pages/diabetes1/diabetes1";
 
 import { DocumentService } from "../services/document.service";
 import { UserService } from '../services/user.service'
+import { AlarmService } from '../services/alarm.service'
 
 @NgModule({
   declarations: [
@@ -46,6 +47,8 @@ import { UserService } from '../services/user.service'
 
     DocumentService,
     UserService,
+    AlarmService,
+
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

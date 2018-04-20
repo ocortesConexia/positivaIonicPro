@@ -18,26 +18,32 @@
 
     <ion-item>
       <ion-label>Fecha control de cita</ion-label>
-      <ion-datetime></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY hh:mm a" [(ngModel)]="alarms.control"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fecha entrega de medicamentos</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY hh:mm a" [(ngModel)]="alarms.delivery"></ion-datetime>
     </ion-item>
   </ion-list>
 
-  <ion-list *ngFor="let medicine of medicines" style="position: relative">
+  <ion-list *ngFor="let medicine of alarms.medicines" style="position: relative">
     <div class="buttons">
       <button ion-button round icon-only clear color="secondary" (click)="addMedicine()">
         <ion-icon name="add"></ion-icon>
       </button>
 
-      <button ion-button round icon-only clear color="danger" (click)="removeMedicine(medicine)" *ngIf="medicines.length > 1">
+      <button ion-button round icon-only clear color="danger" (click)="removeMedicine(medicine)" *ngIf="alarms.medicines.length > 1">
         <ion-icon name="remove"></ion-icon>
       </button>
     </div>
 
     <ion-item>
       <ion-label>Seleccione medicamento</ion-label>
-      <ion-select [(ngModel)]="toppings" cancelText="Nah" okText="Okay!">
-        <ion-option value="bacon" selected="true">Insulina</ion-option>
-        <ion-option value="olives">Black Olives</ion-option>
+      <ion-select [(ngModel)]="medicine.type" cancelText="Cancelar" okText="Aceptar">
+        <ion-option value="medicine1" selected="true">Medicina 1</ion-option>
+        <ion-option value="medicine2">Medicina 2</ion-option>
+        <ion-option value="medicine3">Medicina 3</ion-option>
       </ion-select>
     </ion-item>
 
@@ -47,11 +53,11 @@
     </ion-item>
 
     <ion-item>
-      <ion-label>Intervalo</ion-label>
+      <ion-label>Cada (horas)</ion-label>
       <ion-input type="number" [(ngModel)]="medicine.interval"></ion-input>
     </ion-item>
   </ion-list>
 
-  <button ion-button full color="purple">Guardar</button>
+  <button ion-button full (click)="saveAlarms()">Guardar</button>
 
 </ion-content>
