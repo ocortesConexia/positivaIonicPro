@@ -10,19 +10,32 @@ export interface User {
 
 @Injectable()
 export class UserService {
-  db = (window as any).firebase.firestore()
+  // db = (window as any).firebase.firestore()
 
   constructor () {}
 
   get authenticated () {
-    return JSON.parse(localStorage.getItem('user'))
+    //return JSON.parse(localStorage.getItem('user'))
+    return {
+      id: 'ho1nGy5GDwcdsRLxWRhH',
+      data: {
+        age: 19,
+        document_number: '212897289',
+        document_type: 'CC',
+        first_name: 'Gissel Loreint',
+        last_name: 'Diaz Betancourth'
+      }
+    }
   }
 
   signUp(user: User): Promise<any> {
-    return this.db.collection('users').add(user)
+    // return this.db.collection('users').add(user)
+    return Promise.resolve(this.authenticated)
   }
 
   authenticate(user: any): Promise<any> {
+    return Promise.resolve(this.authenticated)
+/*
     return this.db.collection('users')
       .where('document_type', '==', user.document_type)
       .where('document_number', '==', user.document_number.toString())
@@ -41,6 +54,6 @@ export class UserService {
         }
 
         return doc
-      })
+      })*/
   }
 }

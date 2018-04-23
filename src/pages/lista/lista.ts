@@ -19,7 +19,7 @@ export class ListaPage {
     public $navCtrl: NavController,
     public $user: UserService,
     public $alarm: AlarmService) {
-    this.user = navParams.get('user')
+    this.user = $user.authenticated
     this.alarms = $alarm.alarms
 
     /*
