@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core'
+import { LocalNotifications } from '@ionic-native/local-notifications'
 
 @Injectable()
 export class AlarmService {
   alarms: any
 
-  constructor () {
+  constructor (
+    private $notifications: LocalNotifications) {
     this.alarms = JSON.parse(localStorage.getItem('alarms')) || {
       control: new Date(),
       delivery: new Date(),
@@ -27,6 +29,19 @@ export class AlarmService {
   }
 
   save () {
+    this.$notifications.schedule([
+      {
+        title: 'Cita de control',
+        text: 'Su cita es en 1 minuto, apúrese',
+        trigger: { at: new Date(+new Date() + 3600) }
+      },
+      {
+        title: 'Entrega de medicamentos',
+        text: 'La entrega de medicamentos es en (no sé)',
+        trigger: { at: new Date(+new Date() + 4800) }
+      }
+    ])
+
     localStorage.setItem('alarms', JSON.stringify(this.alarms))
   }
 }
