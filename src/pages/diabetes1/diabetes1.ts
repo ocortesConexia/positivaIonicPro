@@ -22,19 +22,19 @@ export class Diabetes1Page {
   }
 
   addMedicine () {
-    this.$alarm.addMedicine({
+   /* this.$alarm.addMedicine({
       name: 'Medicine',
       from: new Date(),
       interval: 8
-    })
+    })*/
   }
 
   removeMedicine (medicine) {
-    this.$alarm.removeMedicine(medicine)
+   // this.$alarm.removeMedicine(medicine)
   }
 
   saveAlarms () {
-    this.$alarm.save()
+  //  this.$alarm.save()
     this.$navCtrl.push(ListaPage)
   }
 }

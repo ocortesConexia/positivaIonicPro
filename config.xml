@@ -12,7 +12,7 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <preference name="ScrollEnabled" value="false" />
-    <preference name="android-minSdkVersion" value="16" />
+    <preference name="android-minSdkVersion" value="19" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreenDuration" value="300" />
@@ -82,7 +82,13 @@
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.11" />
     <allow-navigation href="http://192.168.141.57:8100" />
-    <engine name="android" spec="~7.0.0" />
-    <engine name="ios" spec="~4.5.4" />
     <plugin name="cordova-plugin-local-notification" spec="^0.9.0-beta.2" />
+    <plugin name="newrelic-cordova-plugin" spec="https://github.com/newrelic/newrelic-cordova-plugin.git">
+        <variable name="IOS_APP_TOKEN" value="AA10f242e4bffad5270bcbc60128e6f68056c9ddde" />
+        <variable name="ANDROID_APP_TOKEN" value="AAa13483494b5e2851e7d3eb021fe6559bbb3148fd" />
+        <variable name="PLUGIN_VERSION" value="5.0.0" />
+        <variable name="ANDROID_AGENT_VER" value="5.19.0" />
+    </plugin>
+    <engine name="android" spec="7.1.0" />
+    <engine name="ios" spec="4.5.4" />
 </widget>

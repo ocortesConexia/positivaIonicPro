@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core'
-import { LocalNotifications } from '@ionic-native/local-notifications'
+//import { LocalNotifications } from '@ionic-native/local-notifications'
 
 @Injectable()
 export class AlarmService {
   alarms: any
 
   constructor (
-    private $notifications: LocalNotifications) {
-    this.alarms = JSON.parse(localStorage.getItem('alarms')) || {
+   // private $notifications: LocalNotifications
+  ) {
+  /*  this.alarms = JSON.parse(localStorage.getItem('alarms')) || {
       control: new Date(),
       delivery: new Date(),
       medicines: [
@@ -17,9 +18,9 @@ export class AlarmService {
           interval: 0
         }
       ]
-    }
+    }*/
   }
-
+/*
   addMedicine (medicine) {
     this.alarms.medicines.push(medicine)
   }
@@ -67,5 +68,5 @@ export class AlarmService {
     this.$notifications.update(alarms as any)
 
     localStorage.setItem('alarms', JSON.stringify(this.alarms))
-  }
+  }*/
 }
